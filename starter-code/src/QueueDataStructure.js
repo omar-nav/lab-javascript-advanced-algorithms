@@ -1,35 +1,37 @@
-class QueueDataStructure {
+class StackDataStructure {
   constructor() {
-    this.queueControl = [];
+    this.stackControl = [];
     this.MAX_SIZE = 8;
   }
+
   isEmpty() {
-    if (this.queueControl.length > 0) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-  canEnqueue() {
-    if (this.queueControl.length < this.MAX_SIZE) {
-      return true;
-    } else {
+    if (this.stackControl.length > 0) {
       return false;
     }
+    return true;
   }
-  enqueue(a) {
-    if (this.canEnqueue()) {
-      this.queueControl.unshift(a);
-      return this.queueControl;
-    } else {
-      return "Queue Overflow";
+
+  canPush() {
+    if (this.stackControl.length < this.MAX_SIZE) {
+      return true;
     }
+    return false;
   }
-  dequeue() {
+
+  push(queAñadir) {
+    if (this.canPush()) {
+      this.stackControl.push(queAñadir);
+    } else {
+      return "Stack Overflow";
+    }
+    return this.stackControl;
+  }
+
+  pop() {
     if (this.isEmpty()) {
-      return "Queue Underflow";
-    } else {
-      return this.queueControl.pop();
+      return "Stack Underflow";
     }
+    this.stackControl.pop();
+    return this.stackControl[this.stackControl.length - 1];
   }
 }
